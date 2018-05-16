@@ -1,0 +1,77 @@
+<% include ../partials/header %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<p class="lead">Sports<span>COM</span></p>
+			<div class="list-group">
+				<li class="list-group-item active">Info 1</li>
+				<li class="list-group-item">Info 2</li>
+				<li class="list-group-item">Info 3</li>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="thumbnail">
+				<div class="center1">
+					<div class="imgBox">
+
+
+
+				<img class="img-responsive" src="<%= campground.image %>"  id="thumbShow">
+				<div class="container1">
+					<div class="content1">
+					<h1>What is Lorem Ipsum</h1>
+					<p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Loren has been the undustry standered dummy text ever since the 1500s.</p>
+				</div>
+				</div>
+				</div>
+			</div>
+				<div class="caption-full">
+					<h4><a><%= campground.name %></a></h4>
+					<p><%= campground.description %></p>
+					<p><em><span>Submitted by <%= campground.author.username %></span><em></p>
+
+					<% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+
+					<a class="btn btn-xs btn-warning" href="/campgrounds/<%= campground.id %>/edit">Edit</a>
+					<form id="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+						<button class="btn btn-xs btn-danger">Delete</button>
+					</form>
+					<% } %>
+				</div>
+			</div>
+
+
+			<div class="ui  main container segment" id="commentbox">
+				<form class="ui form" action="/campgrounds/<%=campground._id %>/comments" method="POST">
+					<div class="field">
+						<input type="text" name="comment[text]" placeholder="write comment..">
+					</div>
+					<input class="ui violet big basic button" type="submit" id=commentbox>
+					<div class="description">
+						<% campground.comments.forEach(function(comment){ %>
+							<div class="ui divider"></div>
+							<strong><i class="user icon"></i><%=comment.author.username %></strong>
+							<p class="pull-right">10 days ago</p>
+							<p class="commentText"><%=comment.text %></p>
+						<% }) %>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="social">
+          <ul>
+              <li id="icon1"><a href="https://twitter.com/mercedesbenz">Twitter <i class="fa fa-twitter fa-lg"></i></a></li>
+              <li id="icon2"><a href="https://www.facebook.com/MercedesBenz/">Facebook <i class="fa fa-facebook fa-lg"></style></i></a></li>
+              <li id="icon3"><a href="https://www.youtube.com/user/MercedesBenzTV">YouTube <i class="fa fa-youtube fa-lg"></i></a></li>
+              <li id="icon4"><a href="https://in.linkedin.com/company/mercedes-benz-usa">LinkedIn <i class="fa fa-linkedin fa-lg"></i></a></li>
+              <li id="icon5"><a href="https://www.instagram.com/mercedesbenz/?hl=en">Instagram <i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+          </ul>
+      </nav>
+<% include ../partials/footer %>
+
+
+
+

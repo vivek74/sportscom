@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+	<div class="ui  main text container segment" id="login">
+		<div class="ui huge header">New Sports<span>INFO</span></div>
+			<form class="ui form" action="/campgrounds" method="POST">
+
+				<div class="field">
+					<label>Title</label>
+					<input type="text" name="name" placeholder="Name">
+				</div>
+
+				<div class="field">
+					<label>Image</label>
+					<input type="text" name="image" placeholder="Image url">
+				</div>
+
+				<div class="field">
+					<label>Blog Content</label>
+					<textarea name="description"></textarea>
+				</div>
+					<input class="ui violet big basic button" type="submit">
+			</form>
+		</div>
+	</div>
+<% include ../partials/footer %>
